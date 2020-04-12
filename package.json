@@ -15,7 +15,7 @@
   },
   "size-limit": [
     {
-      "path": "dist/browser/index.js",
+      "path": "dist/index.js",
       "limit": "10 KB"
     }
   ],
@@ -26,8 +26,9 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\"",
     "pretest": "npm run lint",
     "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore test.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "postbuild": "npm run size-limit",
+    "size-limit": "size-limit",
+    "test": "react-scripts test"
   },
   "license": "MIT",
   "repository": {
@@ -76,6 +77,7 @@
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "size-limit": "^4.4.5"
   }
 }

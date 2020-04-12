@@ -1,5 +1,9 @@
 /*.json
 /*.js
+/.github
+/.dependabot
+/public
+/src
 /.babelrc
 /.eslint*
 .gitignore
