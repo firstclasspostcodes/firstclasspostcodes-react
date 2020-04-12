@@ -1,0 +1,8 @@
+{
+  "presets": [
+    [
+      "react-app", 
+      { "absoluteRuntime": false, "typescript": false }
+    ]
+  ]
+}
