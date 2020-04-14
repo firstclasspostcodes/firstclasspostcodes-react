@@ -4,13 +4,21 @@ import PropTypes from 'prop-types';
 
 import { connectToInput } from './Connector';
 
-const Input = ({ completions, onLookup, onChange, useAutocomplete }) => {
+const Input = ({
+  classNames,
+  completions,
+  onSubmit,
+  onChange,
+  useAutocomplete,
+}) => {
   const inputRef = useRef();
+
+  const { input: inputClasses = {} } = classNames;
 
   const handleLookup = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    onLookup(inputRef.current.value);
+    onSubmit(inputRef.current.value);
   };
 
   const handleKeyUp = (e) => {
@@ -27,10 +35,13 @@ const Input = ({ completions, onLookup, onChange, useAutocomplete }) => {
 
   return (
     <>
-      <label htmlFor="postcode-lookup">Postcode Lookup</label>
+      <label className={inputClasses.label} htmlFor="postcode-lookup">
+        Postcode Lookup
+      </label>
       <input
         id="postcode-lookup"
         list="postcode-lookup-list"
+        className={inputClasses.input}
         type="text"
         onKeyUp={handleKeyUp}
         ref={inputRef}
@@ -40,7 +51,11 @@ const Input = ({ completions, onLookup, onChange, useAutocomplete }) => {
           <option key={completion}>{completion}</option>
         ))}
       </datalist>
-      <button type="submit" onClick={handleClick}>
+      <button
+        className={inputClasses.button}
+        type="submit"
+        onClick={handleClick}
+      >
         Lookup
       </button>
     </>
@@ -53,12 +68,14 @@ Input.propTypes = {
   useAutocomplete: PropTypes.bool,
   completions: PropTypes.array,
   onChange: PropTypes.func.isRequired,
-  onLookup: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  classNames: PropTypes.object,
 };
 
 Input.defaultProps = {
   useAutocomplete: true,
   completions: [],
+  classNames: {},
 };
 
 export default connectToInput(Input);

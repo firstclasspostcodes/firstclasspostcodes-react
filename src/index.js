@@ -5,10 +5,10 @@ import ReactDOM from 'react-dom';
 
 import { PostcodeLookup } from './lib';
 
-const apiKey = '111111111111';
+const apiKey = process.env.REACT_APP_API_KEY;
 
 const apiOverrides = {
-  endpoint: 'http://localhost:2345',
+  endpoint: process.env.REACT_APP_API_ENDPOINT,
 };
 
 const App = () => (

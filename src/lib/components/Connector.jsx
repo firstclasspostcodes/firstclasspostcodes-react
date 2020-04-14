@@ -22,6 +22,7 @@ export const connectToPostcodeLookupContext = (
   }
 
   const mergedProps = {
+    classNames: context.classNames,
     ...nextValue,
     ...props,
   };
@@ -41,7 +42,7 @@ export const connectToInput = (Component) => {
   const ConnectedComponent = ({ client, updateContext, ...props }) => {
     const [autocomplete, setAutocomplete] = useState([]);
 
-    const onLookup = async (value) => {
+    const onSubmit = async (value) => {
       updateContext({
         lookup: await client.getPostcode(value),
       });
@@ -54,7 +55,7 @@ export const connectToInput = (Component) => {
 
       if (autocompleteResponse.isCompleted) {
         const [[postcode]] = autocompleteResponse;
-        await onLookup(postcode);
+        await onSubmit(postcode);
       }
 
       return true;
@@ -63,7 +64,7 @@ export const connectToInput = (Component) => {
     const connectedComponentProps = {
       ...props,
       onChange,
-      onLookup,
+      onSubmit,
     };
 
     if (autocomplete.length > 0 && !autocomplete.isCompleted) {

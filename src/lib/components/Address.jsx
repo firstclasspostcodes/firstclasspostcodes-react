@@ -43,14 +43,18 @@ Address.propTypes = {
   children: PropTypes.any.isRequired,
   addressSelectors: PropTypes.object,
   address: PropTypes.object,
+  classNames: PropTypes.object,
 };
 
 Address.defaultProps = {
   address: {},
   addressSelectors: {
     address: '[data-address-line1]',
+    locality: '[data-address-locality]',
+    region: '[data-address-county]',
     postcode: '[data-address-postcode]',
   },
+  classNames: {},
 };
 
 export default connectToAddress(Address);
