@@ -19,10 +19,14 @@ jobs:
     env:
       CYPRESS_API_URL: http://localhost:2345
       CYPRESS_API_KEY: '111111111111'
+      REACT_APP_API_ENDPOINT: http://localhost:2345
+      REACT_APP_API_KEY: '111111111111'
 
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup NodeJS
+        uses: actions/setup-node@v1
         with:
           node-version: 12
       - name: Install dependencies
