@@ -8,34 +8,38 @@ export const Context = React.createContext(null);
 export const connectToPostcodeLookupContext = (
   Component,
   mapContextToProps
-) => (props) => {
-  const stateRef = useRef([]);
+) => {
+  const ConnectedComponent = React.forwardRef((props, ref) => {
+    const stateRef = useRef([]);
 
-  const [context, updateContext] = useContext(Context);
+    const [context, updateContext] = useContext(Context);
 
-  const [previousValue] = stateRef.current;
+    const [previousValue] = stateRef.current;
 
-  const nextValue = mapContextToProps(context);
+    const nextValue = mapContextToProps(context);
 
-  if (!isEqual(nextValue, previousValue)) {
-    stateRef.current = [nextValue, +new Date()];
-  }
+    if (!isEqual(nextValue, previousValue)) {
+      stateRef.current = [nextValue, +new Date()];
+    }
 
-  const mergedProps = {
-    classNames: context.classNames,
-    ...nextValue,
-    ...props,
-  };
+    const mergedProps = {
+      classNames: context.classNames,
+      ...nextValue,
+      ...props,
+    };
 
-  const [, lastUpdatedTimestamp] = stateRef.current;
+    const [, lastUpdatedTimestamp] = stateRef.current;
 
-  const ConnectedComponent = () => (
-    <Component updateContext={updateContext} {...mergedProps} />
-  );
+    const WrappedComponent = () => (
+      <Component ref={ref} updateContext={updateContext} {...mergedProps} />
+    );
 
-  ConnectedComponent.displayName = `connectToPostcodeLookupContext(${Component.displayName})`;
+    return useMemo(WrappedComponent, [lastUpdatedTimestamp]);
+  });
 
-  return useMemo(ConnectedComponent, [lastUpdatedTimestamp]);
+  ConnectedComponent.displayName = `PostcodeLookup.Connected`;
+
+  return ConnectedComponent;
 };
 
 export const connectToInput = (Component) => {
@@ -76,27 +80,25 @@ export const connectToInput = (Component) => {
 
   ConnectedComponent.displayName = `connectToInput(${Component.displayName})`;
 
-  return connectToPostcodeLookupContext(
-    ConnectedComponent,
-    ({ client, completions }) => ({
-      client,
-      completions,
-    })
-  );
+  return connectToPostcodeLookupContext(ConnectedComponent, ({ client }) => ({
+    client,
+  }));
 };
 
 export const connectToAddressSelector = (Component) => {
   const ConnectedComponent = ({ lookup, updateContext, ...props }) => {
     let addresses = [];
 
+    let onSelected = () => null;
+
     if (lookup) {
       addresses = lookup.listAddresses();
-    }
 
-    const onSelected = (value) => {
-      const address = lookup.formatAddress(value);
-      return updateContext({ address });
-    };
+      onSelected = (value) => {
+        const address = lookup.formatAddress(value);
+        return updateContext({ address });
+      };
+    }
 
     return (
       <Component addresses={addresses} onSelected={onSelected} {...props} />
@@ -118,6 +120,19 @@ export const connectToAddress = (Component) => {
   return connectToPostcodeLookupContext(ConnectedComponent, ({ address }) => ({
     address,
   }));
+};
+
+export const connectToClassNames = (Component) => {
+  const ConnectedComponent = Component;
+
+  ConnectedComponent.displayName = `connectToClassNames(${Component.displayName})`;
+
+  return connectToPostcodeLookupContext(
+    ConnectedComponent,
+    ({ classNames }) => ({
+      classNames,
+    })
+  );
 };
 
 export const Connector = ({ children, ...initialContext }) => {

@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Firstclasspostcodes from '@firstclasspostcodes/js/dist/module';
+import Firstclasspostcodes from '@firstclasspostcodes/js';
 
 import Input from './components/Input';
 import Address from './components/Address';
+import AddressForm from './components/AddressForm';
 import Select from './components/Select';
-import { Connector } from './components/Connector';
+import {
+  Connector,
+  connectToInput,
+  connectToAddress,
+  connectToClassNames,
+  connectToAddressSelector,
+} from './components/Connector';
 
 const PostcodeLookup = ({ apiKey, apiOverrides, children, classNames }) => {
   const client = Firstclasspostcodes(apiKey, apiOverrides);
@@ -32,8 +39,9 @@ PostcodeLookup.defaultProps = {
   classNames: {},
 };
 
-PostcodeLookup.Input = Input;
-PostcodeLookup.Select = Select;
-PostcodeLookup.Address = Address;
+PostcodeLookup.Input = connectToInput(Input);
+PostcodeLookup.Select = connectToAddressSelector(Select);
+PostcodeLookup.Address = connectToAddress(Address);
+PostcodeLookup.AddressForm = connectToClassNames(AddressForm);
 
 export default PostcodeLookup;

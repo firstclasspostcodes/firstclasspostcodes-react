@@ -2,8 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { connectToAddressSelector } from './Connector';
-
 const Select = React.forwardRef(
   ({ classNames, addresses, onSelected }, ref) => {
     const handleChange = (e) => onSelected(e.target.value);
@@ -56,4 +54,4 @@ Select.defaultProps = {
   classNames: {},
 };
 
-export default connectToAddressSelector(Select);
+export default Select;

@@ -1,13 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { connectToAddress } from './Connector';
-
 const Address = ({ address, addressSelectors, children }) => {
   const containerRef = useRef();
 
   useEffect(() => {
-    const cleanUp = () => false;
+    const cleanUp = () => null;
 
     if (
       typeof window === 'undefined' ||
@@ -20,10 +18,10 @@ const Address = ({ address, addressSelectors, children }) => {
 
     Object.keys(addressSelectors).forEach((property) => {
       const value = address[property];
-      if (value) {
-        const $input = containerRef.current.querySelector(
-          addressSelectors[property]
-        );
+      const $input = containerRef.current.querySelector(
+        addressSelectors[property]
+      );
+      if ($input && value) {
         $input.value = value;
       }
       return true;
@@ -57,4 +55,4 @@ Address.defaultProps = {
   classNames: {},
 };
 
-export default connectToAddress(Address);
+export default Address;

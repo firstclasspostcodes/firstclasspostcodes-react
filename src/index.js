@@ -11,51 +11,29 @@ const apiOverrides = {
   endpoint: process.env.REACT_APP_API_ENDPOINT,
 };
 
+const classNames = {
+  addressForm: {
+    addressLine1: 'test-address',
+  },
+};
+
 const App = () => (
   <>
-    <PostcodeLookup apiKey={apiKey} apiOverrides={apiOverrides}>
-      <div>
+    <form>
+      <PostcodeLookup
+        classNames={classNames}
+        apiKey={apiKey}
+        apiOverrides={apiOverrides}
+      >
         <fieldset>
-          <legend>Find your address</legend>
-          <div>
-            <PostcodeLookup.Input />
-          </div>
-          <div>
-            <PostcodeLookup.Select />
-          </div>
+          <PostcodeLookup.Input />
+          <PostcodeLookup.Select />
         </fieldset>
         <PostcodeLookup.Address>
-          <fieldset>
-            <legend>Delivery address</legend>
-            <label htmlFor="address-line-1">Address Line 1</label>
-            <input
-              id="address-line-1"
-              name="address-line-1"
-              type="text"
-              data-address-line1
-            />
-            <label htmlFor="address-line-2">Address Line 2</label>
-            <input
-              id="address-line-2"
-              name="address-line-2"
-              type="text"
-              data-address-line2
-            />
-            <label htmlFor="city">City</label>
-            <input id="city" name="city" type="text" data-address-locality />
-            <label htmlFor="county">County</label>
-            <input id="county" name="county" type="text" data-address-county />
-            <label htmlFor="postcode">Postcode</label>
-            <input
-              id="postcode"
-              name="postcode"
-              type="text"
-              data-address-postcode
-            />
-          </fieldset>
+          <PostcodeLookup.AddressForm legend="Delivery Address" />
         </PostcodeLookup.Address>
-      </div>
-    </PostcodeLookup>
+      </PostcodeLookup>
+    </form>
   </>
 );
 

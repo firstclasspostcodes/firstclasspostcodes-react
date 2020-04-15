@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { connectToInput } from './Connector';
+import Field from './Field';
 
 const Input = ({
   classNames,
@@ -35,16 +35,14 @@ const Input = ({
 
   return (
     <>
-      <label className={inputClasses.label} htmlFor="postcode-lookup">
-        Postcode Lookup
-      </label>
-      <input
-        id="postcode-lookup"
+      <Field
         list="postcode-lookup-list"
-        className={inputClasses.input}
         type="text"
-        onKeyUp={handleKeyUp}
+        classNames={inputClasses}
         ref={inputRef}
+        onKeyUp={handleKeyUp}
+        label="Postcode Lookup"
+        name="postcode-lookup"
       />
       <datalist id="postcode-lookup-list">
         {completions.map((completion) => (
@@ -78,4 +76,4 @@ Input.defaultProps = {
   classNames: {},
 };
 
-export default connectToInput(Input);
+export default Input;

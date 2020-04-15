@@ -11,6 +11,7 @@
     "react"
   ],
   "dependencies": {
+    "@firstclasspostcodes/js": "^1.6.2",
     "react-fast-compare": "^3.0.1"
   },
   "size-limit": [
