@@ -28,10 +28,17 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - uses: cypress-io/github-action@v1
+      - name: Cypress Suite
+        uses: cypress-io/github-action@v1
         with:
           browser: chrome
           start: npm start
+      - name: Upload Cypress Artifacts (on failure)
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: Cypress Artifacts
+          path: cypress/videos
       - name: Semantic Release
         id: semantic
         uses: cycjimmy/semantic-release-action@v2
