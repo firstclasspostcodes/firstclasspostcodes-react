@@ -3,5 +3,8 @@
   "pluginsFile": false,
   "supportFile": false,
   "integrationFolder": "src/",
-  "testFiles": ["**/*.integration.js"]
+  "testFiles": [
+    "**/*.integration.js"
+  ],
+  "projectId": "5tftdm"
 }
