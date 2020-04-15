@@ -7,6 +7,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    services:
+      mock-api:
+        image: firstclasspostcodes/mock:latest
+        env:
+          PORT: 2345
+        ports:
+          - '2345:2345'
+
+    env:
+      CYPRESS_API_URL: http://localhost:2345
+      CYPRESS_API_KEY: '111111111111'
+
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -15,6 +28,10 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+      - uses: cypress-io/github-action@v1
+        with:
+          browser: chrome
+          start: npm start
       - name: Semantic Release
         id: semantic
         uses: cycjimmy/semantic-release-action@v2

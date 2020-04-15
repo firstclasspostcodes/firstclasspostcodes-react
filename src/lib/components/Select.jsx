@@ -15,7 +15,7 @@ const Select = React.forwardRef(
     const { select: selectClasses = {} } = classNames;
 
     return (
-      <>
+      <div className={selectClasses.container}>
         <label className={selectClasses.label} htmlFor={selectId}>
           Select your address
         </label>
@@ -36,7 +36,7 @@ const Select = React.forwardRef(
             </option>
           ))}
         </select>
-      </>
+      </div>
     );
   }
 );

@@ -9,46 +9,36 @@ const AddressForm = React.forwardRef(({ legend, classNames }, ref) => {
   return (
     <fieldset ref={ref}>
       <legend>{legend}</legend>
-      <div>
-        <Field
-          classNames={addressForm.addressLine1}
-          name="address-line-1"
-          label="Address Line 1"
-          data-address-line1
-        />
-      </div>
-      <div>
-        <Field
-          classNames={addressForm.addressLine2}
-          name="address-line-2"
-          label="Address Line 2"
-          data-address-line2
-        />
-      </div>
-      <div>
-        <Field
-          classNames={addressForm.locality}
-          name="locality"
-          label="City/Town"
-          data-address-locality
-        />
-      </div>
-      <div>
-        <Field
-          classNames={addressForm.county}
-          name="county"
-          label="County"
-          data-address-county
-        />
-      </div>
-      <div>
-        <Field
-          classNames={addressForm.postcode}
-          name="postcode"
-          label="Postcode"
-          data-address-postcode
-        />
-      </div>
+      <Field
+        classNames={addressForm.addressLine1}
+        name="address-line-1"
+        label="Address Line 1"
+        data-address-line1
+      />
+      <Field
+        classNames={addressForm.addressLine2}
+        name="address-line-2"
+        label="Address Line 2"
+        data-address-line2
+      />
+      <Field
+        classNames={addressForm.locality}
+        name="locality"
+        label="City/Town"
+        data-address-locality
+      />
+      <Field
+        classNames={addressForm.county}
+        name="county"
+        label="County"
+        data-address-county
+      />
+      <Field
+        classNames={addressForm.postcode}
+        name="postcode"
+        label="Postcode"
+        data-address-postcode
+      />
     </fieldset>
   );
 });

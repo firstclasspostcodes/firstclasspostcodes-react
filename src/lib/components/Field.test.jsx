@@ -18,18 +18,24 @@ describe('<Field/>', () => {
           input: 'test-input',
           label: 'test-label',
         }}
-      />
+      >
+        <button type="submit" id="test-button">
+          Button
+        </button>
+      </Field>
     );
 
     const div = container.querySelector('div');
     const label = container.querySelector('label');
     const input = container.querySelector('input');
+    const button = container.querySelector('#test-button');
 
     expect(div).toHaveClass('test-container');
     expect(label).toHaveClass('test-label');
     expect(input).toHaveClass('test-input');
 
     expect(div).toContainElement(label);
+    expect(div).toContainElement(button);
     expect(div).toContainElement(input);
 
     expect(input).toHaveAttribute('type', 'email');

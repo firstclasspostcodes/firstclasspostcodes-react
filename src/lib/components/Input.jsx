@@ -43,19 +43,20 @@ const Input = ({
         onKeyUp={handleKeyUp}
         label="Postcode Lookup"
         name="postcode-lookup"
-      />
+      >
+        <button
+          className={inputClasses.button}
+          type="submit"
+          onClick={handleClick}
+        >
+          Lookup
+        </button>
+      </Field>
       <datalist id="postcode-lookup-list">
         {completions.map((completion) => (
           <option key={completion}>{completion}</option>
         ))}
       </datalist>
-      <button
-        className={inputClasses.button}
-        type="submit"
-        onClick={handleClick}
-      >
-        Lookup
-      </button>
     </>
   );
 };

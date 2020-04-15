@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,20 +11,58 @@ const apiOverrides = {
 };
 
 const classNames = {
-  addressForm: {
-    addressLine1: 'test-address',
+  select: {
+    container: 'test-select-container',
+    select: 'test-select-select',
+    label: 'test-select-label',
   },
+  input: {
+    container: 'test-input-container',
+    input: 'test-input-input',
+    label: 'test-input-label',
+    button: 'test-input-button',
+  },
+  addressForm: {
+    addressLine1: {
+      container: 'test-addressLine1-container',
+      input: 'test-addressLine1-input',
+      label: 'test-addressLine1-label',
+    },
+    addressLine2: {
+      container: 'test-addressLine2-container',
+      input: 'test-addressLine2-input',
+      label: 'test-addressLine2-label',
+    },
+    locality: {
+      container: 'test-locality-container',
+      input: 'test-locality-input',
+      label: 'test-locality-label',
+    },
+    county: {
+      container: 'test-county-container',
+      input: 'test-county-input',
+      label: 'test-county-label',
+    },
+    postcode: {
+      container: 'test-postcode-container',
+      input: 'test-postcode-input',
+      label: 'test-postcode-label',
+    },
+  },
+};
+
+const postcodeLookupProps = {
+  classNames,
+  apiKey,
+  apiOverrides,
 };
 
 const App = () => (
   <>
     <form>
-      <PostcodeLookup
-        classNames={classNames}
-        apiKey={apiKey}
-        apiOverrides={apiOverrides}
-      >
+      <PostcodeLookup {...postcodeLookupProps}>
         <fieldset>
+          <legend>Find your address</legend>
           <PostcodeLookup.Input />
           <PostcodeLookup.Select />
         </fieldset>

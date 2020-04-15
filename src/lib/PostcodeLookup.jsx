@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Firstclasspostcodes from '@firstclasspostcodes/js';
 
 import Input from './components/Input';
 import Address from './components/Address';
@@ -13,6 +12,8 @@ import {
   connectToClassNames,
   connectToAddressSelector,
 } from './components/Connector';
+
+const Firstclasspostcodes = require('@firstclasspostcodes/js/dist/main');
 
 const PostcodeLookup = ({ apiKey, apiOverrides, children, classNames }) => {
   const client = Firstclasspostcodes(apiKey, apiOverrides);
