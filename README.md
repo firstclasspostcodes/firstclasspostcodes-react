@@ -4,7 +4,7 @@
 We've designed our [React](https://reactjs.org) component library to be as flexible as possible enabling you to quickly configure build or enhance any form with postcode lookup.
 
 ## Documentation
-See [@firstclasspostcodes/react](https://docs.firstclasspostcodes.com/js/react) for detailed usage, guides and examples.
+See [@firstclasspostcodes/react](https://docs.firstclasspostcodes.com/frameworks/react) for detailed usage, guides and examples.
 
 ## Installation
 Install the package with:
