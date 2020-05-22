@@ -65,7 +65,7 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-angular": "^8.3.4",
     "@size-limit/preset-small-lib": "^4.4.5",
-    "@testing-library/jest-dom": "^5.7.0",
+    "@testing-library/jest-dom": "^5.8.0",
     "@testing-library/react": "^10.0.4",
     "@testing-library/user-event": "^10.3.4",
     "cypress": "^4.6.0",
