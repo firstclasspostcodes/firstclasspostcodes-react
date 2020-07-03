@@ -61,7 +61,7 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.3",
+    "@babel/cli": "^7.10.4",
     "@commitlint/cli": "^9.0.1",
     "@commitlint/config-angular": "^9.0.1",
     "@size-limit/preset-small-lib": "^4.4.5",
