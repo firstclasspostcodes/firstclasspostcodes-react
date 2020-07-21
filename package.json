@@ -1,6 +1,7 @@
 {
   "name": "@firstclasspostcodes/react",
   "version": "0.0.1",
+  "main": "dist/index.js",
   "description": "Firstclasspostcodes component library for the React framework",
   "homepage": "https://github.com/firstclasspostcodes/firstclasspostcodes-react",
   "author": "Firstclasspostcodes <support@firstclasspostcodes.com> (https://firstclasspostcodes.com/)",
