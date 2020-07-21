@@ -22,7 +22,7 @@ describe('<Select/>', () => {
   describe('when there are no addresses', () => {
     it('renders nothing', () => {
       const { container } = setup(selectProps);
-      expect(container).toBeEmpty();
+      expect(container).toBeEmptyDOMElement();
     });
   });
 
