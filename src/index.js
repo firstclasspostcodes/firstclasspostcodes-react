@@ -63,7 +63,9 @@ const App = () => (
       <PostcodeLookup {...postcodeLookupProps}>
         <fieldset>
           <legend>Find your address</legend>
-          <PostcodeLookup.Input />
+          <PostcodeLookup.Input
+            inputProps={{ placeholder: 'Enter a postcode' }}
+          />
           <PostcodeLookup.Select />
         </fieldset>
         <PostcodeLookup.Address>

@@ -9,6 +9,7 @@ const Input = ({
   completions,
   onSubmit,
   onChange,
+  inputProps,
   useAutocomplete,
 }) => {
   const inputRef = useRef();
@@ -43,6 +44,7 @@ const Input = ({
         onKeyUp={handleKeyUp}
         label="Postcode Lookup"
         name="postcode-lookup"
+        {...inputProps}
       >
         <button
           className={inputClasses.button}
@@ -68,6 +70,7 @@ Input.propTypes = {
   completions: PropTypes.array,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  inputProps: PropTypes.object,
   classNames: PropTypes.object,
 };
 
@@ -75,6 +78,7 @@ Input.defaultProps = {
   useAutocomplete: true,
   completions: [],
   classNames: {},
+  inputProps: {},
 };
 
 export default Input;

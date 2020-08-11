@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Select = React.forwardRef(
-  ({ classNames, addresses, onSelected }, ref) => {
+  ({ classNames, addresses, onSelected, selectProps }, ref) => {
     const handleChange = (e) => onSelected(e.target.value);
 
     if (!addresses || addresses.length === 0) {
@@ -26,6 +26,7 @@ const Select = React.forwardRef(
           defaultValue="select"
           ref={ref}
           onChange={handleChange}
+          {...selectProps}
         >
           <option value="select" disabled>
             Choose an address...
@@ -46,11 +47,13 @@ Select.displayName = 'PostcodeLookup.Select';
 Select.propTypes = {
   addresses: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   onSelected: PropTypes.func.isRequired,
+  selectProps: PropTypes.object,
   classNames: PropTypes.object,
 };
 
 Select.defaultProps = {
   addresses: [],
+  selectProps: {},
   classNames: {},
 };
 

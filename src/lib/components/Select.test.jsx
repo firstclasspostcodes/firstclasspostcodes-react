@@ -10,11 +10,17 @@ const setup = (props) => {
 describe('<Select/>', () => {
   let selectProps;
 
+  let selectInputProps;
+
   let onSelected;
 
   beforeEach(() => {
+    selectInputProps = {
+      'data-test': 'foobar',
+    };
     onSelected = jest.fn();
     selectProps = {
+      selectProps: selectInputProps,
       onSelected,
     };
   });
@@ -34,6 +40,14 @@ describe('<Select/>', () => {
 
     beforeEach(() => {
       selectProps.addresses = addresses;
+    });
+
+    it('renders select props passed through to the field', () => {
+      const { container } = setup(selectProps);
+      const select = container.querySelector('select');
+      expect(select.getAttribute('data-test')).toEqual(
+        selectInputProps['data-test']
+      );
     });
 
     it('renders a select element with the correct options', () => {

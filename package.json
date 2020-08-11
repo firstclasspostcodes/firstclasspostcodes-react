@@ -29,6 +29,8 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\"",
     "pretest": "npm run lint",
     "cypress": "cypress run --headless --browser chrome",
+    "cypress:open": "cypress open --browser chrome",
+    "open": "start-server-and-test start http://localhost:3000 cypress:open",
     "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore test.js",
     "postbuild": "npm run size-limit",
     "size-limit": "size-limit",
@@ -85,6 +87,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "size-limit": "^4.4.5"
+    "size-limit": "^4.4.5",
+    "start-server-and-test": "^1.11.3"
   }
 }
