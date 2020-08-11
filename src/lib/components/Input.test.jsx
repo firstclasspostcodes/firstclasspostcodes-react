@@ -14,15 +14,31 @@ describe('<Input />', () => {
 
   let onSubmit;
 
+  let textInputProps;
+
   beforeEach(() => {
     inputProps = {};
     onChange = jest.fn();
     onSubmit = jest.fn();
+    textInputProps = {
+      placeholder: 'enter a postcode',
+    };
   });
 
   beforeEach(() => {
+    inputProps.inputProps = textInputProps;
     inputProps.onChange = onChange;
     inputProps.onSubmit = onSubmit;
+  });
+
+  describe('input props are passed through to the <input/> component', () => {
+    it('renders inputProps', () => {
+      const { container } = setup(inputProps);
+      const input = container.querySelector('input[type=text]');
+      expect(input.getAttribute('placeholder')).toEqual(
+        textInputProps.placeholder
+      );
+    });
   });
 
   describe('when the button is clicked', () => {

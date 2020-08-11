@@ -10,6 +10,15 @@ describe('<PostcodeLookup />', () => {
       .as('fixture');
   });
 
+  describe('the rendered postcode form', () => {
+    it('renders a placeholder', () => {
+      cy.get('.test-input-input').as('input');
+      cy.get('@input')
+        .invoke('attr', 'placeholder')
+        .should('eq', 'Enter a postcode');
+    });
+  });
+
   describe('when a postcode is entered and the button is clicked', () => {
     it('retrieves and fills a matching address', () => {
       cy.get('.test-input-input').as('input');
