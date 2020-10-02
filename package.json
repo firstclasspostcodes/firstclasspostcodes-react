@@ -88,6 +88,6 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
     "size-limit": "^4.4.5",
-    "start-server-and-test": "^1.11.4"
+    "start-server-and-test": "^1.11.5"
   }
 }
