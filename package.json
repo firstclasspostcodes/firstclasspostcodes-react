@@ -61,7 +61,7 @@
   },
   "peerDependencies": {
     "react": "^16.14.0",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -85,7 +85,7 @@
     "prettier": "^2.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.14.0",
     "react-scripts": "3.4.4",
     "size-limit": "^4.4.5",
     "start-server-and-test": "^1.11.5"
