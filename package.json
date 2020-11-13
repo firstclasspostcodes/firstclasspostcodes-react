@@ -70,7 +70,7 @@
     "@size-limit/preset-small-lib": "^4.4.5",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
-    "@testing-library/user-event": "^12.2.0",
+    "@testing-library/user-event": "^12.2.2",
     "cypress": "^4.12.1",
     "cypress-terminal-report": "^2.2.0",
     "eslint": "^6.8.0",
