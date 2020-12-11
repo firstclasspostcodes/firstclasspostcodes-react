@@ -81,7 +81,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
-    "git-cz": "^4.7.3",
+    "git-cz": "^4.7.6",
     "prettier": "^2.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
